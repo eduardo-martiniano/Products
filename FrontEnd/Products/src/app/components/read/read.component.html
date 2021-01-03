@@ -1,1 +1,9 @@
-<p>read works!</p>
+<ul>
+  <li *ngFor="let product of products">
+      <picture>
+        <img src="{{product.image}}" alt="Imagem do produto">
+      </picture>
+      <h3>{{product.name}}</h3>
+  </li>
+</ul>
+
