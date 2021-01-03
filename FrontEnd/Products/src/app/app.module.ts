@@ -9,13 +9,17 @@ import { MatToolbarModule} from '@angular/material/toolbar';
 import { NavComponent } from './components/nav/nav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { CreateComponent } from './components/create/create.component';
+import { ReadComponent } from './components/read/read.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    NavComponent
+    NavComponent,
+    CreateComponent,
+    ReadComponent
   ],
   imports: [
     BrowserModule,
