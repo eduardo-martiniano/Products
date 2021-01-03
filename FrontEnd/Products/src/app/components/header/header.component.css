@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+  background-color: rgb(206, 202, 202);
+  color: black;
+
+
+}
+
+.header a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header .logo {
+  max-height: 32px;
+}
+
+.header i {
+  margin-right: 10px;
+}
