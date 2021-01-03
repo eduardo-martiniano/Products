@@ -12,6 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { CreateComponent } from './components/create/create.component';
 import { ReadComponent } from './components/read/read.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
