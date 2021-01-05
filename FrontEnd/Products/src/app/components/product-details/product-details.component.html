@@ -1,25 +1,23 @@
 
-<h2 mat-dialog-title>Detalhes do produto</h2>
+  <h2 mat-dialog-title>Detalhes do produto</h2>
 <mat-dialog-content class="mat-typography">
   <form [formGroup]="formulario">
     <mat-form-field>
       <mat-label>Nome do produto</mat-label>
       <input placeholder="Nome do produto" formControlName="name" matInput type="text">
     </mat-form-field>
-    <br>
     <mat-form-field>
       <mat-label>Valor do produto</mat-label>
       <input placeholder="Valor" formControlName="price" matInput type="number">
     </mat-form-field>
-    <br>
     <mat-form-field>
       <mat-label>Link da imagem</mat-label>
       <input placeholder="Link" formControlName="image" matInput type="text">
     </mat-form-field>
-    <br>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" [disabled]="!isValid" cdkFocusInitial (click)="edit()">Editar</button>
+  <button mat-raised-button mat-dialog-close color="basic">Cancel</button>
+  <button mat-raised-button mat-dialog-close color="warn" (click)="remove()">Excluir</button>
+  <button mat-raised-button [mat-dialog-close]="true" [disabled]="!isValid" cdkFocusInitial (click)="edit()" color="primary">Editar</button>
 </mat-dialog-actions>

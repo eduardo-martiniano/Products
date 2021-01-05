@@ -31,6 +31,12 @@ export class ProductDetailsComponent implements OnInit {
     })
   }
 
+  remove(): void {
+    this.productService.remove(this.data.product.id).subscribe(x =>{
+
+    })
+  }
+
   get isValid(): boolean{
     return this.formulario.valid
   }

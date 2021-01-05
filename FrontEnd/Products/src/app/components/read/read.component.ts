@@ -24,7 +24,7 @@ export class ReadComponent implements OnInit {
     })
   }
 
-  details(product: Product): void{
+  details(product: Product): void {
     const dialog = this.dialog.open(ProductDetailsComponent,  {
       data:{
         product
@@ -32,7 +32,6 @@ export class ReadComponent implements OnInit {
     })
     dialog.afterClosed().subscribe(x => this.loadAll())
   }
-
 }
 
 
