@@ -1,6 +1,6 @@
  <div class="l-cards">
   <div *ngFor="let product of products" >
-    <div class="card">
+    <div class="card" (click)="details(product)">
       <img src="{{product.image}}" alt="Avatar" class="avatar">
       <div class="dados">
         <h4><b class="name">{{product.name}}</b></h4>

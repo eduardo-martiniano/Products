@@ -1,4 +1,6 @@
-<div class="content">
+
+<h2 mat-dialog-title>Detalhes do produto</h2>
+<mat-dialog-content class="mat-typography">
   <form [formGroup]="formulario">
     <mat-form-field>
       <mat-label>Nome do produto</mat-label>
@@ -15,7 +17,9 @@
       <input placeholder="Link" formControlName="image" matInput type="text">
     </mat-form-field>
     <br>
-    <button mat-button color="accent" (click)="create()" >Criar produto</button>
   </form>
-</div>
-
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" [disabled]="!isValid" cdkFocusInitial (click)="edit()">Editar</button>
+</mat-dialog-actions>

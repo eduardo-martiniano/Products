@@ -15,4 +15,13 @@ export class ProductService {
   readAll(): Observable<Product[]>{
     return this.http.get<Product[]>(this.baseUrl)
   }
+
+  create(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.baseUrl, product)
+  }
+
+  edit(product: Product, id?: number): Observable<Product> {
+    return this.http.put<Product>(this.baseUrl+'/'+id, product)
+  }
+
 }

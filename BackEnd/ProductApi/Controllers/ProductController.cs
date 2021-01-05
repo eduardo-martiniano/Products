@@ -43,5 +43,13 @@ namespace ProductApi.Controllers
             _productRepository.Remove(id);
             return Ok();
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        public IActionResult Update([FromRoute] int id, [FromBody] Product product)
+        {
+            var _product = _productRepository.Update(id, product);
+            return Ok(_product);
+        }
     }
 }

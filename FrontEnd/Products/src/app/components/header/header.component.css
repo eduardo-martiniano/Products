@@ -3,8 +3,9 @@
   align-items: center;
   background-color: rgb(206, 202, 202);
   color: black;
-
-
+  z-index: 99999;
+  position: fixed;
+  top: 0;
 }
 
 .header a {

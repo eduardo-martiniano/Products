@@ -46,6 +46,7 @@ namespace ProductApi.Repositories
             var _product = Get(id);
             _product.Name = product.Name;
             _product.Price = product.Price;
+            _product.Image = product.Image;
             _context.SaveChanges();
             return _product;
         }

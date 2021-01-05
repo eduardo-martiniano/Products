@@ -25,12 +25,13 @@ li{
 }
 
 .l-cards{
-  padding: 20px;
+  padding: 30px;
   justify-content: center;
   justify-items: center;
   display: grid;
   grid-gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-top: 40px;
 }
 
 .avatar{
