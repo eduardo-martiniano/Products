@@ -1,21 +1,25 @@
 <div class="content">
-  <form [formGroup]="formulario">
-    <mat-form-field>
-      <mat-label>Nome do produto</mat-label>
-      <input placeholder="Nome do produto" formControlName="name" matInput type="text">
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <mat-label>Valor do produto</mat-label>
-      <input placeholder="Valor" formControlName="price" matInput type="number">
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <mat-label>Link da imagem</mat-label>
-      <input placeholder="Link" formControlName="image" matInput type="text">
-    </mat-form-field>
-    <br>
-    <button mat-button color="accent" (click)="create()" >Criar produto</button>
-  </form>
+  <mat-card>
+    <mat-card-title>Cadastre um novo produto para sua loja</mat-card-title>
+    <form [formGroup]="formulario">
+      <mat-form-field>
+        <mat-label>Nome do produto</mat-label>
+        <input placeholder="Nome do produto" formControlName="name" matInput type="text">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Valor do produto</mat-label>
+        <input placeholder="Valor" formControlName="price" matInput type="number">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Link da imagem</mat-label>
+        <input placeholder="Link" formControlName="image" matInput type="text">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" (click)="create()" >Criar produto</button>
+      <button mat-raised-button color="warn" (click)="create()" >Cancelar</button>
+    </form>
+  </mat-card>
 </div>
 
