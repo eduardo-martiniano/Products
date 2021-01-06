@@ -1,4 +1,9 @@
- <div class="l-cards">
+<div class="div-search">
+  <mat-form-field class="search">
+    <input matInput type="text" [(ngModel)] = "productName" placeholder="Pesquise por um produto" (keyup)="getByName()">
+  </mat-form-field>
+</div>
+<div class="l-cards">
   <div *ngFor="let product of products" >
     <div class="card" (click)="details(product)">
       <img src="{{product.image}}" alt="Avatar" class="avatar">

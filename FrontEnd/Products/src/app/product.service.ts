@@ -16,6 +16,10 @@ export class ProductService {
     return this.http.get<Product[]>(this.baseUrl)
   }
 
+  getByName(name: string): Observable<Product[]>{
+    return this.http.get<Product[]>(this.baseUrl+'/search?name='+name)
+  }
+
   create(product: Product): Observable<Product> {
     return this.http.post<Product>(this.baseUrl, product)
   }

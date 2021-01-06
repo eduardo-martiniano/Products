@@ -1,4 +1,5 @@
-﻿using ProductApi.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using ProductApi.Contracts;
 using ProductApi.Data;
 using ProductApi.Entities;
 using System;
@@ -32,6 +33,13 @@ namespace ProductApi.Repositories
         public List<Product> Get()
         {
             return _context.Products.ToList();
+        }
+
+        public List<Product> GetByName(string name)
+        {
+            return  _context.Products.Where(p => p.Name.ToLower()
+                                     .Contains(name.ToLower()))
+                                     .ToList();
         }
 
         public void Remove(int id)

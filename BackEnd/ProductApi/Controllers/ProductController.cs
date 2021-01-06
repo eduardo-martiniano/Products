@@ -36,6 +36,14 @@ namespace ProductApi.Controllers
             return Ok(_products);
         }
 
+        [HttpGet]
+        [Route("search")]
+        public IActionResult GetByName([FromQuery] string name)
+        {
+            var _product =  _productRepository.GetByName(name);
+            return Ok(_product);
+        }
+
         [HttpDelete]
         [Route("{id}")]
         public IActionResult Remove([FromRoute] int id)

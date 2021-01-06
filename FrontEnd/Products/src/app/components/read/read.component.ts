@@ -12,6 +12,7 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 export class ReadComponent implements OnInit {
 
   products!: Product[]
+  productName: string = ''
   constructor(private productService: ProductService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -20,6 +21,15 @@ export class ReadComponent implements OnInit {
 
   loadAll(): void {
     this.productService.readAll().subscribe(products =>{
+      this.products = products
+    })
+  }
+
+  getByName(): void {
+    if (this.productName === ''){
+      this.loadAll()
+    }
+    this.productService.getByName(this.productName).subscribe(products =>{
       this.products = products
     })
   }
