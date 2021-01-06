@@ -34,4 +34,8 @@ export class CreateComponent implements OnInit {
     })
   }
 
+  get isValid(): boolean{
+    return this.formulario.valid
+  }
+
 }

@@ -17,7 +17,7 @@
         <input placeholder="Link" formControlName="image" matInput type="text">
       </mat-form-field>
       <br>
-      <button mat-raised-button color="primary" (click)="create()" >Criar produto</button>
+      <button mat-raised-button color="primary" [disabled]="!isValid" (click)="create()" >Criar produto</button>
       <button mat-raised-button color="warn" (click)="create()" >Cancelar</button>
     </form>
   </mat-card>

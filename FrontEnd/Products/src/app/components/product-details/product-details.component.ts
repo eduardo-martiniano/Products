@@ -2,6 +2,7 @@ import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Product } from 'src/app/product.model';
 import { ProductService } from 'src/app/product.service';
 
@@ -14,7 +15,7 @@ export class ProductDetailsComponent implements OnInit {
 
   formulario: FormGroup
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {product: Product}, private productService: ProductService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {product: Product}, private productService: ProductService, private snackBar: MatSnackBar) {
     this.formulario = new FormGroup({
       name: new FormControl(data.product.name, [Validators.required, Validators.maxLength(20)]),
       price: new FormControl(data.product.price, [Validators.required]),
@@ -28,6 +29,9 @@ export class ProductDetailsComponent implements OnInit {
   edit(): void {
     const product = this.formulario.value as Product
     this.productService.edit(product, this.data.product.id).subscribe(x =>{
+      this.snackBar.open("Produto Editado com sucesso!", "Fechar", {
+        duration: 5000
+      })
     })
   }
 
