@@ -1,5 +1,5 @@
 # Products
-O projeto foi feito com a versão 14.15.0 do Node e com o .NET 3.1
+O projeto foi feito com a versão 14.15.0 do Node e com o .NET Core 3.1
 
 Para rodar o projeto, abra a api Products e dê o seguinte omando:
 - dotnet run
