@@ -22,6 +22,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     CreateComponent,
     ReadComponent,
     ProductDetailsComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

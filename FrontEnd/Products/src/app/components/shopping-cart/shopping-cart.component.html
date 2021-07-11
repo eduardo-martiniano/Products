@@ -1,0 +1,22 @@
+<div id="products">
+  <div class="product-card" *ngFor="let p of products">
+    <div class="div-image-title">
+      <img src="{{p.image}}" alt="">
+      <h1 class="title">{{p.name}}</h1>
+    </div>
+    <div>
+      <span class="price">{{p.price | currency: "BRL"}}</span>
+    </div>
+  </div>
+  <div id="total-purchase">
+    <span>{{total | currency: "BRL"}}</span>
+  </div>
+</div>
+
+<div class="footer-fixed">
+  <div class="button-next">
+    <button mat-flat-button>
+      <span class="label">Pagar</span>
+    </button>
+  </div>
+</div>
