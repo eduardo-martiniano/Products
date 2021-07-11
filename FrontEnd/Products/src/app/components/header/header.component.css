@@ -1,23 +1,13 @@
-.header {
-  display: flex;
-  align-items: center;
-  background-color: rgb(206, 202, 202);
-  color: black;
-  z-index: 99999;
-  position: fixed;
-  top: 0;
+button {
+  font-size: 18px;
 }
 
-.header a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
+button:hover {
+  background-color: white;
+  color: #3465a4;
+  transition: 0.5s;
 }
 
-.header .logo {
-  max-height: 32px;
-}
-
-.header i {
-  margin-right: 10px;
+#nav-bar {
+  justify-content: space-between;
 }

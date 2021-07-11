@@ -1,17 +1,13 @@
-<div class="div-search">
-  <mat-form-field class="search">
-    <input matInput type="text" [(ngModel)] = "productName" placeholder="Pesquise por um produto" (keyup)="getByName()" style="width: 90%;"> <i style="float: right; " class="material-icons">search</i>
-  </mat-form-field>
-</div>
-<div class="l-cards">
-  <div *ngFor="let product of products" >
-    <div class="card" (click)="details(product)">
-      <img src="{{product.image}}" alt="Avatar" class="avatar">
-      <div class="dados">
-        <h4><b class="name">{{product.name}}</b></h4>
-        <p class="name">{{product.price | currency: "BRL"}}</p>
-      </div>
-    </div>
+<div id="container">
+  <div id="div-search">
+    <mat-form-field appearance="outline">
+      <mat-label>Pesquisar produto:</mat-label>
+      <mat-icon matSuffix>search</mat-icon>
+      <input matInput type="text" [(ngModel)]="productName" (keyup)="getByName()">
+    </mat-form-field>
   </div>
- </div>
-
+  <div class="l-cards">
+    <app-product-card *ngFor="let p of products" [product]="p"></app-product-card>
+    <!-- <app-product-card *ngFor="let p of products" [product]="p" (click)="details(p)"></app-product-card> -->
+  </div>
+</div>

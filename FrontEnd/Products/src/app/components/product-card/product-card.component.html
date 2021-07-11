@@ -1,0 +1,8 @@
+<div id="card">
+  <img src="{{product.image}}" alt="Avatar" class="avatar">
+  <div class="dados">
+    <h4><b class="name">{{product.name}}</b></h4>
+    <p class="name">{{product.price | currency: "BRL"}}</p>
+    <button id="add-button" mat-button (click)="addToCart()">Adicionar no carrinho</button>
+  </div>
+</div>

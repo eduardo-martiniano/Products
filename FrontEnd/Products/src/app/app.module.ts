@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule} from '@angular/material/toolbar';
-import { NavComponent } from './components/nav/nav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { CreateComponent } from './components/create/create.component';
@@ -20,15 +19,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    NavComponent,
     CreateComponent,
     ReadComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,9 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     ReactiveFormsModule,
     MatSnackBarModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
