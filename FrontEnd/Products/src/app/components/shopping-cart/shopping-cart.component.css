@@ -28,6 +28,10 @@ img {
   font-size: 25px;
 }
 
+.label {
+  font-size: 20px;
+}
+
 .footer-fixed {
   bottom: 0px;
   width: 100%;
@@ -49,6 +53,27 @@ img {
   height: 50px;
 }
 
-.label {
+.div-price-remove {
+  display: grid;
+  padding: 10px;
+  text-align: center;
+}
+
+.button-remove {
+  margin-top: 20px;
+  width: 120px;
+}
+
+.label-price {
   font-size: 20px;
+}
+
+#cart-empty {
+  font-size: 50px;
+}
+
+#div-cart-empty {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
 }

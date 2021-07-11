@@ -24,6 +24,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     MatDialogModule,
     FormsModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

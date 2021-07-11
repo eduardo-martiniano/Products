@@ -34,7 +34,19 @@ export class LocalStorageService {
   }
 
   getTotalOfBuy(): number {
-    return Number.parseFloat(localStorage.getItem('total') || "0");
+    let total = 0;
+    let list = this.getProductListInCart();
+    if (list.length > 0) {
+      total = list.map(x => x.price).reduce((total, currentElement) => total + currentElement, 0);
+    }
+    return total;
+
+  }
+
+  removeProduct(product_id: number) {
+    let productsListInCart = this.getProductListInCart().filter(x => x.id != product_id);
+    localStorage.setItem("products", JSON.stringify(productsListInCart));
+    this.productsNumber--;
   }
 
 }
