@@ -1,0 +1,31 @@
+<div id="container">
+  <h1>Insira os dados do cartão para finalizar a compra</h1>
+  <form [formGroup]="form">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Número do cartão</mat-label>
+        <input matInput formControlName="number">
+        <mat-icon matSuffix>payment</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Nome no cartão</mat-label>
+        <input matInput formControlName="name">
+        <mat-icon matSuffix>badge</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Código de segurança</mat-label>
+        <input matInput formControlName="cvv">
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Data de validade</mat-label>
+        <input matInput formControlName="dateValidate">
+        <mat-icon matSuffix>event</mat-icon>
+      </mat-form-field>
+    </p>
+  </form>
+  <h2>Total: {{priceTotal | currency: "BRL"}}</h2>
+  <button mat-raised-button id="button-pay">Finalizar Compra</button>
+</div>

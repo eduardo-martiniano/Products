@@ -24,4 +24,17 @@ export class LocalStorageService {
     return JSON.parse(localStorage.getItem("products") as string) || [];
   }
 
+  productInList(productId: number): boolean {
+    const list = this.getProductListInCart();
+    return list.filter(x => x.id == productId).length > 0;
+  }
+
+  createTotalOfBuy(total: number) {
+    localStorage.setItem('total', total.toString())
+  }
+
+  getTotalOfBuy(): number {
+    return Number.parseFloat(localStorage.getItem('total') || "0");
+  }
+
 }

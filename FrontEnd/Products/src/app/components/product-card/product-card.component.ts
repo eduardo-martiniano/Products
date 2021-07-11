@@ -18,7 +18,9 @@ export class ProductCardComponent implements OnInit {
   }
 
   addToCart() {
-    this.localStorageService.addToCart(this.product);
+    if (!this.localStorageService.productInList(this.product.id || 0)) {
+      this.localStorageService.addToCart(this.product);
+    }
   }
 
 }

@@ -23,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     ReadComponent,
     ProductDetailsComponent,
     ProductCardComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
