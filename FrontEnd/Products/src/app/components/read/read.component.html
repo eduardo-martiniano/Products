@@ -7,7 +7,6 @@
     </mat-form-field>
   </div>
   <div class="l-cards">
-    <app-product-card *ngFor="let p of products" [product]="p"></app-product-card>
-    <!-- <app-product-card *ngFor="let p of products" [product]="p" (click)="details(p)"></app-product-card> -->
+    <app-product-card *ngFor="let p of products" (productEdited)="loadAll()" [product]="p"></app-product-card>
   </div>
 </div>

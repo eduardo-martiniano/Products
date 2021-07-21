@@ -6,6 +6,17 @@
   border: thick solid #3465a4;
 }
 
+#header-buttons {
+  text-align: end;
+  color: #3465a4;
+}
+
+#button-edit:hover {
+  background-color: #3465a4;;
+  color: white;
+  transition: 0.5s;
+}
+
 #card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 1);
   cursor: pointer;
