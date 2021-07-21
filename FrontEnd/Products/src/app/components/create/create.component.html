@@ -1,25 +1,26 @@
-<div class="content">
-  <mat-card>
-    <mat-card-title>Cadastre um novo produto para sua loja</mat-card-title>
+<div id="container">
+    <h1 id="title">Adicionar produto na loja</h1>
     <form [formGroup]="formulario">
-      <mat-form-field>
-        <mat-label>Nome do produto</mat-label>
-        <input placeholder="Nome do produto" formControlName="name" matInput type="text">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <mat-label>Valor do produto</mat-label>
-        <input placeholder="Valor" formControlName="price" matInput type="number">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <mat-label>Link da imagem</mat-label>
-        <input placeholder="Link" formControlName="image" matInput type="text">
-      </mat-form-field>
-      <br>
-      <button mat-raised-button color="primary" [disabled]="!isValid" (click)="create()" >Criar produto</button>
-      <button mat-raised-button color="warn" (click)="create()" >Cancelar</button>
+      <div id="primary-line">
+        <mat-form-field appearance="outline" id="name">
+          <mat-label>Nome</mat-label>
+          <input formControlName="name" matInput type="text">
+        </mat-form-field>
+        <mat-form-field appearance="outline" id="price">
+          <mat-label>Preço R$</mat-label>
+          <input formControlName="price" min="0" matInput type="number">
+        </mat-form-field>
+      </div>
+      <p>
+        <mat-form-field appearance="outline" id="link">
+          <mat-label>Link da imagem</mat-label>
+          <input formControlName="image" matInput type="text">
+        </mat-form-field>
+      </p>
+      <div id="buttons">
+        <button mat-raised-button color="primary" [disabled]="!isValid" (click)="create()" >Criar produto</button>
+        <button mat-raised-button color="warn" (click)="create()"><span>Cancelar</span></button>
+      </div>
     </form>
-  </mat-card>
 </div>
 

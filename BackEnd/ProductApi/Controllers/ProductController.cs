@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProductApi.Contracts;
 using ProductApi.Entities;
@@ -22,41 +19,42 @@ namespace ProductApi.Controllers
 
         [Route("")]
         [HttpPost]
-        public IActionResult Add([FromBody] Product product)
+        public async Task<IActionResult> Add([FromBody] Product product)
         {
-            var _product = _productRepository.Add(product);
+            product.Id = Guid.NewGuid();
+            var _product = await _productRepository.Add(product);
             return Ok(_product);
         }
 
         [HttpGet]
         [Route("")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var _products = _productRepository.Get();
+            var _products = await _productRepository.Get();
             return Ok(_products);
         }
 
         [HttpGet]
         [Route("search")]
-        public IActionResult GetByName([FromQuery] string name)
+        public async Task<IActionResult> GetByName([FromQuery] string name)
         {
-            var _product =  _productRepository.GetByName(name);
+            var _product = await _productRepository.GetByName(name);
             return Ok(_product);
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult Remove([FromRoute] int id)
+        public async Task<IActionResult> Remove([FromRoute] Guid id)
         {
-            _productRepository.Remove(id);
+            await _productRepository.Remove(id);
             return Ok();
         }
 
         [HttpPut]
         [Route("{id}")]
-        public IActionResult Update([FromRoute] int id, [FromBody] Product product)
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] Product product)
         {
-            var _product = _productRepository.Update(id, product);
+            var _product = await _productRepository.Update(id, product);
             return Ok(_product);
         }
     }

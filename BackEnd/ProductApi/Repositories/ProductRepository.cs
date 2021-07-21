@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 using ProductApi.Contracts;
 using ProductApi.Data;
 using ProductApi.Entities;
@@ -17,46 +18,40 @@ namespace ProductApi.Repositories
         {
             _context = context;
         }
-        public Product Add(Product product)
+        public async Task<Product> Add(Product product)
         {
-            _context.Products.Add(product);
-            _context.SaveChanges();
-
+            await _context.Products.InsertOneAsync(product);
             return product;
         }
 
-        public Product Get(int id)
+        public async Task<Product> Get(Guid id)
         {
-            return _context.Products.Where(p => p.Id == id).FirstOrDefault();
+            return await _context.Products.Find(p => p.Id == id).FirstOrDefaultAsync();
         }
 
-        public List<Product> Get()
+        public async Task<List<Product>> Get()
         {
-            return _context.Products.ToList();
+            return await _context.Products.Find(p => true).ToListAsync();
         }
 
-        public List<Product> GetByName(string name)
+        public async Task<List<Product>> GetByName(string name)
         {
-            return  _context.Products.Where(p => p.Name.ToLower()
-                                     .Contains(name.ToLower()))
-                                     .ToList();
+            return await _context.Products.Find(p => p.Name.ToLower()
+                                          .Contains(name.ToLower()))
+                                          .ToListAsync();
         }
 
-        public void Remove(int id)
+        public async Task Remove(Guid id)
         {
-            var product = Get(id);
-            _context.Products.Remove(product);
-            _context.SaveChanges();
+            await _context.Products.DeleteOneAsync(p => p.Id == id);
         }
 
-        public Product Update(int id, Product product)
+        public async Task<Product> Update(Guid id, Product product)
         {
-            var _product = Get(id);
-            _product.Name = product.Name;
-            _product.Price = product.Price;
-            _product.Image = product.Image;
-            _context.SaveChanges();
-            return _product;
+            product.Id = id;
+            await _context.Products.ReplaceOneAsync(p => p.Id == id, product);
+            return product;
         }
+
     }
 }

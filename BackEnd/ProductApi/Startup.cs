@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ProductApi.Config;
 using ProductApi.Contracts;
 using ProductApi.Data;
 using ProductApi.Repositories;
@@ -31,14 +32,24 @@ namespace ProductApi
         {
             services.AddSwaggerGen();
 
-            services.AddControllers();
+            services.Configure<ConfigDB>(op => 
+            {
+                op.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
+                op.Database = Configuration.GetSection("MongoConnection:Database").Value;
+            });
+
+            services.AddControllers()
+                    .AddNewtonsoftJson(op =>
+                    op.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddScoped<IProductRepository, ProductRepository>();
 
-            services.AddDbContext<Context>(op =>
-            {
-                op.UseSqlite("Data Source=Data\\Data.db");
-            });
+            // services.AddDbContext<Context>(op =>
+            // {
+            //     op.UseSqlite("Data Source=Data\\Data.db");
+            // });
+
+            services.AddScoped<Context>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

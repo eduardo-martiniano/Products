@@ -8,11 +8,11 @@ namespace ProductApi.Contracts
 {
     public interface IProductRepository
     {
-        Product Add(Product product);
-        Product Update(int id, Product product);
-        Product Get(int id);
-        List<Product> GetByName(string name);
-        List<Product> Get();
-        void Remove(int id);
+        Task<Product> Add(Product product);
+        Task<Product> Update(Guid id, Product product);
+        Task<Product> Get(Guid id);
+        Task<List<Product>> GetByName(string name);
+        Task<List<Product>> Get();
+        Task Remove(Guid id);
     }
 }

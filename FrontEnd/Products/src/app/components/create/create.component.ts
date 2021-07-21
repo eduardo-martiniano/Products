@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/product.model';
 import { ProductService } from 'src/app/product.service';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-create',
@@ -11,25 +11,24 @@ import { ProductService } from 'src/app/product.service';
 })
 export class CreateComponent implements OnInit {
 
-  formulario: FormGroup
+  formulario: any;
 
-  constructor(private productService : ProductService, private snackBar: MatSnackBar) {
-    this.formulario = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-      price: new FormControl('', [Validators.required]),
-      image: new FormControl('', [Validators.required])
-    })
-  }
+  constructor(private productService : ProductService,
+              private messageSevice: MessageService, 
+              private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.formulario = this.fb.group({
+      name: ['', [Validators.required, Validators.maxLength(20)]],
+      price: ['', [Validators.required]],
+      image: ['', [Validators.required]]
+    })
   }
 
   create(): void {
     const product = this.formulario.value as Product
     this.productService.create(product).subscribe(x =>{
-      this.snackBar.open("Produto Criado com sucesso!", "Fechar", {
-        duration: 5000
-      })
+      this.messageSevice.showSucess("Produto Criado com sucesso!")
       this.formulario.reset()
     })
   }
