@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/product.model';
-import { ProductService } from 'src/app/product.service';
 import { MessageService } from 'src/app/services/message.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-create',

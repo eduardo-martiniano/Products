@@ -20,5 +20,6 @@ namespace ProductApi.Data
         }
 
         public IMongoCollection<Product> Products => _mongoDatabase.GetCollection<Product>("Products");
+        public IMongoCollection<Buy> Buys => _mongoDatabase.GetCollection<Buy>("Buys");
     }
 }

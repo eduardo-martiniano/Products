@@ -1,37 +1,83 @@
-<div id="container">
-  <h1>Insira os dados do cartão para finalizar a compra</h1>
-  <form [formGroup]="form">
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Número do cartão</mat-label>
-        <input matInput formControlName="number">
-        <mat-icon matSuffix>payment</mat-icon>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Nome no cartão</mat-label>
-        <input matInput formControlName="name">
-        <mat-icon matSuffix>badge</mat-icon>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Código de segurança</mat-label>
-        <input matInput formControlName="cvv">
-        <mat-icon matSuffix>lock</mat-icon>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Data de validade</mat-label>
-        <input matInput formControlName="dateValidate">
-        <mat-icon matSuffix>event</mat-icon>
-      </mat-form-field>
-    </p>
-  </form>
-  <h2>Total: {{priceTotal | currency: "BRL"}}</h2>
-  <div class="footer-fixed">
-    <div class="button-next">
-      <button mat-flat-button>
-        <span class="label">Finalizar</span>
-      </button>
+<mat-horizontal-stepper>
+  <mat-step label="Dados de endereço">
+    <div id="container-address">
+      <form [formGroup] ="formAddress">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Cep</mat-label>
+            <input matInput formControlName="zipcode" cep [textMask]="{mask: MASKS.cep.textMask}">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Rua</mat-label>
+            <input matInput formControlName="street">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Número</mat-label>
+            <input matInput formControlName="number">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Bairro</mat-label>
+            <input matInput formControlName="district">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Cidade</mat-label>
+            <input matInput formControlName="city">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Estado</mat-label>
+            <input matInput formControlName="state">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" id="address-complement">
+            <mat-label>Complemento</mat-label>
+            <input matInput formControlName="complement">
+          </mat-form-field>
+        </p>
+      </form>
     </div>
-  </div>
-</div>
+    <div id="div-next-address">
+      <button mat-flat-button color="primary" [disabled]="!formAddressValid"  matStepperNext>Seguir para dados do cartão</button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="formPayment" label="Dados do cartão">
+    <div>
+      <form [formGroup]="formPayment" id="container-payment">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Número do cartão</mat-label>
+            <input matInput formControlName="number">
+            <mat-icon matSuffix>payment</mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Nome no cartão</mat-label>
+            <input matInput formControlName="name">
+            <mat-icon matSuffix>badge</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Código de segurança</mat-label>
+            <input matInput formControlName="cvv">
+            <mat-icon matSuffix>lock</mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Data de validade</mat-label>
+            <input matInput formControlName="dateValidate">
+            <mat-icon matSuffix>event</mat-icon>
+          </mat-form-field>
+        </p>
+      </form>
+    </div>
+    <div id="div-next-payment">
+      <h2>Total: {{priceTotal | currency: "BRL"}}</h2>
+      <button mat-flat-button matStepperPrevious id="button-back">Voltar</button>
+      <button mat-flat-button color="primary" (click)="pay()" matStepperNext>Finalizar compra</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

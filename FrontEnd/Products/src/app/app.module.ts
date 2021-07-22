@@ -25,6 +25,9 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ToastrModule } from 'ngx-toastr';
+import { MatStepperModule } from '@angular/material/stepper';
+import { NgBrazil } from 'ng-brazil'
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     MatIconModule,
     MatBadgeModule,
+    MatStepperModule,
+    NgBrazil,
+    TextMaskModule,
     ToastrModule.forRoot(),
   ],
   providers: [],
