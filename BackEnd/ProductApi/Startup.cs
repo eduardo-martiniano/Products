@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using ProductApi.Config;
 using ProductApi.Contracts;
 using ProductApi.Data;
+using ProductApi.RabbitMQ;
 using ProductApi.Repositories;
 using ProductApi.Services;
 
@@ -39,6 +40,7 @@ namespace ProductApi
             services.AddScoped<IBuyRepository, BuyRepository>();
             services.AddScoped<IBuyService, BuyService>();
             services.AddScoped<Context>();
+            services.AddSingleton<EventBus>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
