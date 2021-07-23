@@ -1,14 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using ProductApi.Config;
 using ProductApi.Entities;
 
 namespace ProductApi.Data
 {
-    public class Context : DbContext
+    public class Context
     {
-        public DbSet<Product> Products { get; set; }
-        public Context (DbContextOptions<Context> options) : base(options)
+        private readonly IMongoDatabase _mongoDatabase;
+        public Context(IOptions<ConfigDB> opcoes)
         {
-            Database.EnsureCreated();
+            var mongoCliente = new MongoClient(opcoes.Value.ConnectionString);
+
+            if (mongoCliente != null)
+            {
+                _mongoDatabase = mongoCliente.GetDatabase(opcoes.Value.Database);
+            }
         }
+
+        public IMongoCollection<Product> Products => _mongoDatabase.GetCollection<Product>("Products");
+        public IMongoCollection<Buy> Buys => _mongoDatabase.GetCollection<Buy>("Buys");
     }
 }

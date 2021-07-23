@@ -1,4 +1,9 @@
 <div id="card">
+  <div id="header-buttons">
+    <button mat-button id="button-edit" (click)="edit()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
   <img src="{{product.image}}" alt="Avatar" class="avatar">
   <div class="dados">
     <h4><b class="name">{{product.name}}</b></h4>

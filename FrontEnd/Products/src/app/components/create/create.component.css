@@ -1,8 +1,62 @@
-.content{
-  margin-top: 70px;
-  align-items: center;
+#container {
+  width: 95%;
+  margin: 20px auto;
   text-align: center;
 }
-button{
-  margin-right: 5px;
+
+#title {
+  padding-top: 10px;
+}
+
+#name {
+  width: 40%;
+  max-width: 400px;
+  margin-right: 2%;
+}
+
+#price {
+  width: 15%;
+  max-width: 150px;
+}
+
+#link {
+  width: 57%;
+  max-width: 570px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#buttons {
+  display: grid;
+  justify-content: center;
+}
+
+button {
+  width: 280px;
+  height: 40px;
+  margin-top: 20px;
+  font-size: 17px;
+}
+
+@media (max-width: 600px) {
+  #price {
+    width: 100px;
+  }
+
+  #name {
+    width: 150px;
+  }
+  
+  #link {
+    width: 255px;
+  }
+
 }

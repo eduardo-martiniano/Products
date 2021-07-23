@@ -1,10 +1,11 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Product } from 'src/app/product.model';
-import { ProductService } from 'src/app/product.service';
+import { MessageService } from 'src/app/services/message.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,25 +14,25 @@ import { ProductService } from 'src/app/product.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  formulario: FormGroup
+  formulario: any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {product: Product}, private productService: ProductService, private snackBar: MatSnackBar) {
-    this.formulario = new FormGroup({
-      name: new FormControl(data.product.name, [Validators.required, Validators.maxLength(20)]),
-      price: new FormControl(data.product.price, [Validators.required]),
-      image: new FormControl(data.product.image, [Validators.required])
-    })
-  }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {product: Product}, 
+              private productService: ProductService, 
+              private fb: FormBuilder,
+              private messageService: MessageService) {}
 
   ngOnInit(): void {
+    this.formulario = this.fb.group({
+      name: [this.data.product.name, [Validators.required, Validators.maxLength(20)]],
+      price: [this.data.product.price, [Validators.required]],
+      image: [this.data.product.image, [Validators.required]]
+    })
   }
 
   edit(): void {
     const product = this.formulario.value as Product
     this.productService.edit(product, this.data.product.id).subscribe(x =>{
-      this.snackBar.open("Produto Editado com sucesso!", "Fechar", {
-        duration: 5000
-      })
+      this.messageService.showSucess("Produto Editado com sucesso!")
     })
   }
 

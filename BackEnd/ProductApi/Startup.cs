@@ -1,19 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using ProductApi.Config;
 using ProductApi.Contracts;
 using ProductApi.Data;
+using ProductApi.RabbitMQ;
 using ProductApi.Repositories;
+using ProductApi.Services;
 
 namespace ProductApi
 {
@@ -31,14 +26,21 @@ namespace ProductApi
         {
             services.AddSwaggerGen();
 
-            services.AddControllers();
+            services.Configure<ConfigDB>(op => 
+            {
+                op.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
+                op.Database = Configuration.GetSection("MongoConnection:Database").Value;
+            });
+
+            services.AddControllers()
+                    .AddNewtonsoftJson(op =>
+                    op.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddScoped<IProductRepository, ProductRepository>();
-
-            services.AddDbContext<Context>(op =>
-            {
-                op.UseSqlite("Data Source=Data\\Data.db");
-            });
+            services.AddScoped<IBuyRepository, BuyRepository>();
+            services.AddScoped<IBuyService, BuyService>();
+            services.AddScoped<Context>();
+            services.AddSingleton<EventBus>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
