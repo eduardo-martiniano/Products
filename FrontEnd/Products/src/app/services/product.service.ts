@@ -12,8 +12,12 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  readAll(): Observable<Product[]>{
-    return this.http.get<Product[]>(this.baseUrl)
+  readAll(): Promise<any>{
+    return new Promise((resolve, reject) => {
+      this.http.get<Product[]>(this.baseUrl).subscribe(
+        result => resolve(result),
+        error => reject(error));
+    });
   }
 
   getByName(name: string): Observable<Product[]>{

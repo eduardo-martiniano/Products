@@ -13,7 +13,7 @@ namespace PaymentApi.Services
             {
                 BuyId = buyId,
                 Amount = amount,
-                Payd = false
+                Payd = true
             };
 
             return result;

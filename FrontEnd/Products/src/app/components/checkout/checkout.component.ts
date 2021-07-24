@@ -68,7 +68,7 @@ export class CheckoutComponent implements OnInit {
     };
 
     this.paymentService.pay(buyViweModel).then(response => {
-      console.log(response);
+      this.localStorageService.clearLocalStorage();
       this.router.navigate(['finish/'+ response.id]);
     })
   }

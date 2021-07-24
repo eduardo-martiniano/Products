@@ -49,4 +49,10 @@ export class LocalStorageService {
     this.productsNumber--;
   }
 
+  clearLocalStorage() {
+    localStorage.removeItem('total');
+    localStorage.removeItem('products');
+    this.productsNumber = 0;
+  }
+
 }

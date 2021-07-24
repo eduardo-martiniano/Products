@@ -10,4 +10,5 @@ button:hover {
 
 #nav-bar {
   justify-content: space-between;
+  width: 100%;
 }

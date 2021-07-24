@@ -9,7 +9,7 @@
       <button mat-raised-button color="warn" class="button-remove" (click)="removeProduct(p.id || 0)">Remover</button>
     </div>
   </div>
-  <div id="total-purchase">
+  <div id="total-purchase" *ngIf="!(total == 0)">
     <span>{{total | currency: "BRL"}}</span>
   </div>
 </div>
@@ -17,7 +17,7 @@
 <div class="footer-fixed" *ngIf="!(total == 0)">
   <div class="button-next">
     <button mat-flat-button (click)="pay()">
-      <span class="label">Seguir para Checkout</span>
+      <span class="label">Seguir para checkout</span>
     </button>
   </div>
 </div>
@@ -26,7 +26,4 @@
   <h1>
     Sem compras no carrinho :(
   </h1>
-  <mat-icon id="cart-empty">
-    shopping_cart
-  </mat-icon>
 </div>

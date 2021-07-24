@@ -10,3 +10,5 @@
     <app-product-card *ngFor="let p of products" (productEdited)="loadAll()" [product]="p"></app-product-card>
   </div>
 </div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3f51b5" type = "timer" [fullScreen] = "true"></ngx-spinner>
