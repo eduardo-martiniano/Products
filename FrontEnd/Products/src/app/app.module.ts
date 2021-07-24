@@ -28,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatStepperModule } from '@angular/material/stepper';
 import { NgBrazil } from 'ng-brazil'
 import { TextMaskModule } from 'angular2-text-mask';
+import { CompletedBuyComponent } from './components/completed-buy/completed-buy.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TextMaskModule } from 'angular2-text-mask';
     ProductDetailsComponent,
     ProductCardComponent,
     ShoppingCartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CompletedBuyComponent
   ],
   imports: [
     BrowserModule,

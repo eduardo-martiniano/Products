@@ -37,6 +37,7 @@ namespace ProductApi.Services
         {
             var payload = new  PaymentPublishedPayload 
             {
+                BuyId = model.Buy.Id,
                 Amount = model.Buy.Amount,
                 Card = model.Card
             };

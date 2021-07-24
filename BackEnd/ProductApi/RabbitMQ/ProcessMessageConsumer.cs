@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using PaymentApi.Contracts;
-using PaymentApi.RabbitMQ.Payloads;
+using ProductApi.HostedServices;
+using ProductApi.RabbitMQ.Payloads;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace PaymentApi.RabbitMQ
+namespace ProductApi.RabbitMQ
 {
     public class ProcessMessageConsumer : BackgroundService
     {
@@ -17,13 +17,11 @@ namespace PaymentApi.RabbitMQ
         private readonly IConnection _connection;
         private readonly IModel _channel;
         private readonly EventBus _eventBus;
-        private readonly IPaymentService _paymentService;
+        private readonly UpdateStockPriceHostedService _updateStockPriceHostedService;
 
-        public ProcessMessageConsumer(IOptions<RabbitMqConfiguration> option, 
-                                      EventBus eventBus,
-                                      IPaymentService paymentService)
+        public ProcessMessageConsumer(IOptions<RabbitMqConfiguration> option, EventBus eventBus, UpdateStockPriceHostedService updateStockPriceHostedService)
         {
-            _paymentService = paymentService;
+            _updateStockPriceHostedService = updateStockPriceHostedService;
             _eventBus = eventBus;
             _configuration = option.Value;
             var factory = new ConnectionFactory
@@ -49,10 +47,8 @@ namespace PaymentApi.RabbitMQ
             {
                 var contentArray = eventArgs.Body.ToArray();
                 var contentString = Encoding.UTF8.GetString(contentArray);
-                var message = JsonConvert.DeserializeObject<PaymentReceiverPayload>(contentString);
-                var result = _paymentService.ProcessPayment(message.Amount, message.BuyId, message.Card);
-
-                _eventBus.PublishEvent(result, "buy_processed");
+                var message = JsonConvert.DeserializeObject<PaymentProcessedPayload>(contentString);
+                _updateStockPriceHostedService.UpdatePrices(message);
 
                 _channel.BasicAck(eventArgs.DeliveryTag, false);
             };

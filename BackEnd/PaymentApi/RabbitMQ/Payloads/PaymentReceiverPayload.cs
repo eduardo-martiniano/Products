@@ -3,6 +3,8 @@ namespace PaymentApi.RabbitMQ.Payloads
     public class PaymentReceiverPayload
     {
         public double Amount { get; set; }
+        public string BuyId { get; set; }
+        public bool Payd { get; set; }
         public CardPayload Card { get; set; }
     }
 

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CompletedBuyComponent } from './components/completed-buy/completed-buy.component';
 import { CreateComponent } from './components/create/create.component';
 import { ReadComponent } from './components/read/read.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path :"checkout",
     component: CheckoutComponent
+  },
+  {
+    path :"finish/:buyId",
+    component: CompletedBuyComponent
   }
 ];
 

@@ -16,11 +16,13 @@ export class CheckoutComponent implements OnInit {
   formAddress: any;
   formPayment: any;
   public MASKS = utilsBr.MASKS;
-
+  
   constructor(private router: Router, 
               private fb: FormBuilder, 
               private paymentService: PaymentService,
-              private localStorageService: LocalStorageService) {}
+              private localStorageService: LocalStorageService) {
+                
+              }
 
   ngOnInit(): void {
     this.formAddress = this.fb.group({
@@ -67,9 +69,10 @@ export class CheckoutComponent implements OnInit {
 
     this.paymentService.pay(buyViweModel).then(response => {
       console.log(response);
+      this.router.navigate(['finish/'+ response.id]);
     })
-
   }
+
 
 }
 

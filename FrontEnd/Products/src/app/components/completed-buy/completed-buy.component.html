@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div id="container">
+    <div id="process-payment" *ngIf="statusPayment==0">
+        <div>
+            <h1>Aguarde, estamos processando seu pagamento!</h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i>
+        </div>
+    </div>
+    <div id="refused-payment" *ngIf="statusPayment==1">
+        <div>
+            <h1>Oops! Seu pagamento foi recusado</h1>
+            <mat-icon>error</mat-icon>
+        </div>
+    </div>
+    <div id="accepted-payment" *ngIf="statusPayment==2">
+        <div>
+            <h1>Pagamento aprovado com sucesso!</h1>
+            <mat-icon>check</mat-icon>
+        </div>
+    </div>
+</div>

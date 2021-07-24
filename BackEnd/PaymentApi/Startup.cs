@@ -11,7 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using PaymentApi.Contracts;
 using PaymentApi.RabbitMQ;
+using PaymentApi.Services;
 
 namespace PaymentApi
 {
@@ -27,13 +29,17 @@ namespace PaymentApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHostedService<ProcessMessageConsumer>();
-            services.Configure<RabbitMqConfiguration>(Configuration.GetSection("RabbitMqConfig"));
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PaymentApi", Version = "v1" });
             });
+
+            services.Configure<RabbitMqConfiguration>(Configuration.GetSection("RabbitMqConfig"));
+            services.AddSingleton<IPaymentService, PaymentService>();
+            services.AddSingleton<EventBus>();
+            services.AddHostedService<ProcessMessageConsumer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
