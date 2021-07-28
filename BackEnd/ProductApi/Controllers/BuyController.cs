@@ -1,8 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ProductApi.Contracts;
-using ProductApi.Entities;
-using ProductApi.ViewModels;
+using ProductApi.Domain.Contracts.Services;
+using ProductApi.Domain.Models.ViewModels;
 
 namespace ProductApi.Controllers
 {

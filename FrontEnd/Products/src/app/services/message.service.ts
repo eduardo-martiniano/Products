@@ -26,4 +26,16 @@ export class MessageService {
     });
   }
 
+  showErrorByStatus(statusCode: number) {
+    switch (statusCode) {
+      case 401:
+        this.showError("Você não tem permissão para esta ação!");
+        break;
+    
+      default:
+        this.showError("Sistema indisponivel no momento!");
+        break;
+    }
+  }
+
 }

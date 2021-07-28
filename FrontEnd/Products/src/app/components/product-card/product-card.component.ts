@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Product } from 'src/app/product.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
@@ -14,12 +15,17 @@ export class ProductCardComponent implements OnInit {
 
   @Input() product!: Product;
   @Output() productEdited = new EventEmitter();
+  authenticated = false;
 
   constructor(private localStorageService: LocalStorageService,
-              private dialog: MatDialog, 
+              private dialog: MatDialog,
+              private authService: AuthService, 
               private messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.authService.authenticated.subscribe(value => {
+      this.authenticated = value;
+    });
   }
 
   addToCart() {

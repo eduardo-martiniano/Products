@@ -3,6 +3,10 @@
   margin: 20px auto;
 }
 
+#content {
+  height: 95%;
+}
+
 .product-card {
   border-radius: 8px;
   border: 1px solid #c3c3c3;

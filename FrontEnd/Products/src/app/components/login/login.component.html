@@ -1,0 +1,23 @@
+<div id="content">
+    <div id="card-login">
+        <h1>Administrador</h1>
+        <form [formGroup]="form">
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Login</mat-label>
+                    <input matInput type="text" formControlName="username">
+                    <mat-icon matSuffix>account_box</mat-icon>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Senha</mat-label>
+                    <input matInput type="password" formControlName="password">
+                    <mat-icon matSuffix>password</mat-icon>
+                </mat-form-field>
+            </p>
+            <button mat-raised-button id="button-login" (click)="login()">ENTRAR</button>
+        </form>
+    </div>
+</div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3f51b5" type = "timer" [fullScreen] = "true"></ngx-spinner>

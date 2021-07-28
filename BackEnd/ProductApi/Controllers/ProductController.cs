@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ProductApi.Contracts;
-using ProductApi.Entities;
+using ProductApi.Domain.Contracts.Repositories;
+using ProductApi.Domain.Entities;
 
 namespace ProductApi.Controllers
 {
@@ -19,6 +20,7 @@ namespace ProductApi.Controllers
 
         [Route("")]
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Add([FromBody] Product product)
         {
             product.Id = Guid.NewGuid();
@@ -44,6 +46,7 @@ namespace ProductApi.Controllers
 
         [HttpDelete]
         [Route("{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Remove([FromRoute] Guid id)
         {
             await _productRepository.Remove(id);
@@ -52,6 +55,7 @@ namespace ProductApi.Controllers
 
         [HttpPut]
         [Route("{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] Product product)
         {
             var _product = await _productRepository.Update(id, product);

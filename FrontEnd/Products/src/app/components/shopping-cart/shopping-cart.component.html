@@ -1,29 +1,32 @@
-<div id="products">
-  <div class="product-card" *ngFor="let p of products">
-    <div class="div-image-title">
-      <img src="{{p.image}}" alt="">
-      <h1 class="title">{{p.name}}</h1>
+<div id="content">
+  <div id="products">
+    <div class="product-card" *ngFor="let p of products">
+      <div class="div-image-title">
+        <img src="{{p.image}}" alt="">
+        <h1 class="title">{{p.name}}</h1>
+      </div>
+      <div class="div-price-remove">
+        <span class="label-price">{{p.price | currency: "BRL"}}</span>
+        <button mat-raised-button color="warn" class="button-remove" (click)="removeProduct(p.id || 0)">Remover</button>
+      </div>
     </div>
-    <div class="div-price-remove">
-      <span class="label-price">{{p.price | currency: "BRL"}}</span>
-      <button mat-raised-button color="warn" class="button-remove" (click)="removeProduct(p.id || 0)">Remover</button>
+    <div id="total-purchase" *ngIf="!(total == 0)">
+      <span>{{total | currency: "BRL"}}</span>
     </div>
   </div>
-  <div id="total-purchase" *ngIf="!(total == 0)">
-    <span>{{total | currency: "BRL"}}</span>
-  </div>
-</div>
 
-<div class="footer-fixed" *ngIf="!(total == 0)">
-  <div class="button-next">
-    <button mat-flat-button (click)="pay()">
-      <span class="label">Seguir para checkout</span>
-    </button>
+  <div class="footer-fixed" *ngIf="!(total == 0)">
+    <div class="button-next">
+      <button mat-flat-button (click)="pay()">
+        <span class="label">Seguir para checkout</span>
+      </button>
+    </div>
   </div>
-</div>
 
-<div id="div-cart-empty" *ngIf="total == 0">
-  <h1>
-    Sem compras no carrinho :(
-  </h1>
+  <div id="div-cart-empty" *ngIf="total == 0">
+    <h1>
+      Sem compras no carrinho :(
+    </h1>
+  </div>
+
 </div>

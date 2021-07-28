@@ -31,6 +31,16 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { CompletedBuyComponent } from './components/completed-buy/completed-buy.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxMaskModule } from 'ngx-mask';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { HideDirective } from './directives/hide.directive';
+import { JwtModule } from '@auth0/angular-jwt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData("ptBr");
+export function tokenGetter(){
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -42,7 +52,10 @@ import { NgxMaskModule } from 'ngx-mask';
     ProductCardComponent,
     ShoppingCartComponent,
     CheckoutComponent,
-    CompletedBuyComponent
+    CompletedBuyComponent,
+    FooterComponent,
+    LoginComponent,
+    HideDirective
   ],
   imports: [
     BrowserModule,
@@ -68,9 +81,15 @@ import { NgxMaskModule } from 'ngx-mask';
     NgxSpinnerModule,
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [HideDirective]
 })
 export class AppModule { }

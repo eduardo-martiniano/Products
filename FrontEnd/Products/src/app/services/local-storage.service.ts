@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Product } from '../product.model';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class LocalStorageService {
 
   productsNumber = 0;
 
-  constructor() {
+  constructor(private jwt: JwtHelperService) {
     let productsListInCart = this.getProductListInCart();
     this.productsNumber = productsListInCart.length
   }
@@ -52,7 +53,27 @@ export class LocalStorageService {
   clearLocalStorage() {
     localStorage.removeItem('total');
     localStorage.removeItem('products');
+    localStorage.removeItem('token');
     this.productsNumber = 0;
+  }
+
+  saveToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  getToken() {
+    return localStorage.getItem('token') || '';
+  }
+
+  userAuthenticated(): boolean {
+    const tokenDecoded = this.jwt.decodeToken(localStorage.getItem('token') as string);
+    console.log(tokenDecoded);
+    return localStorage.getItem('token') != null;
+  }
+
+  userHasThisRole(role: string): boolean {
+    const decodedToken = this.jwt.decodeToken(localStorage.getItem('token') as string);
+    return decodedToken?.role == role;
   }
 
 }

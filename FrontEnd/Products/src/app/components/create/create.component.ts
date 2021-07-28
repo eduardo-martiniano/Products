@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from 'src/app/product.model';
 import { MessageService } from 'src/app/services/message.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -14,7 +15,8 @@ export class CreateComponent implements OnInit {
   formulario: any;
 
   constructor(private productService : ProductService,
-              private messageSevice: MessageService, 
+              private messageSevice: MessageService,
+              private spinner: NgxSpinnerService,
               private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -26,11 +28,17 @@ export class CreateComponent implements OnInit {
   }
 
   create(): void {
+    this.spinner.show();
     const product = this.formulario.value as Product
-    this.productService.create(product).subscribe(x =>{
-      this.messageSevice.showSucess("Produto Criado com sucesso!");
+    this.productService.create(product).then(() =>{
+      this.messageSevice.showSucess("Produto criado com sucesso!");
       this.formulario.reset();
-    })
+      this.spinner.hide();
+    }).catch(error => {
+      this.messageSevice.showErrorByStatus(error.status);
+      this.formulario.reset();
+      this.spinner.hide();
+    });
   }
 
   get isValid(): boolean{

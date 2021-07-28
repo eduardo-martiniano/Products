@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CompletedBuyComponent } from './components/completed-buy/completed-buy.component';
 import { CreateComponent } from './components/create/create.component';
+import { LoginComponent } from './components/login/login.component';
 import { ReadComponent } from './components/read/read.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
@@ -10,6 +11,10 @@ const routes: Routes = [
   {
     path: "",
     component: ReadComponent
+  },
+  {
+    path: "login",
+    component: LoginComponent
   },
   {
     path: "products",

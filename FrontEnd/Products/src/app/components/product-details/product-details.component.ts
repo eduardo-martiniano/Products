@@ -2,7 +2,7 @@ import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from 'src/app/product.model';
 import { MessageService } from 'src/app/services/message.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -19,6 +19,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: {product: Product}, 
               private productService: ProductService, 
               private fb: FormBuilder,
+              private spinner: NgxSpinnerService,
               private messageService: MessageService) {}
 
   ngOnInit(): void {
@@ -30,16 +31,17 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   edit(): void {
-    const product = this.formulario.value as Product
-    this.productService.edit(product, this.data.product.id).subscribe(x =>{
-      this.messageService.showSucess("Produto Editado com sucesso!")
-    })
+    this.spinner.show();
+    const product = this.formulario.value as Product;
+    this.productService.edit(product, this.data.product.id).then(() =>{
+      this.spinner.hide();
+      this.messageService.showSucess("Produto Editado com sucesso!");
+    });
   }
 
   remove(): void {
-    this.productService.remove(this.data.product.id).subscribe(x =>{
-
-    })
+    this.productService.remove(this.data.product.id).then(
+      () => this.messageService.showSucess("Produto excluido com sucesso!"));
   }
 
   get isValid(): boolean{

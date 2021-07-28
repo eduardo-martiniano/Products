@@ -1,6 +1,6 @@
 <div id="card">
   <div id="header-buttons">
-    <button mat-button id="button-edit" (click)="edit()">
+    <button mat-button id="button-edit" (click)="edit()" *ngIf="authenticated">
       <mat-icon>edit</mat-icon>
     </button>
   </div>
