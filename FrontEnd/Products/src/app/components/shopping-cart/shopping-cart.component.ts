@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/product.model';
+import { Product } from 'src/app/models/product.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { MessageService } from 'src/app/services/message.service';
 

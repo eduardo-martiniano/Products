@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Product } from 'src/app/product.model';
+import { Product } from 'src/app/models/product.model';
 import { MessageService } from 'src/app/services/message.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -16,8 +16,8 @@ export class ProductDetailsComponent implements OnInit {
 
   formulario: any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {product: Product}, 
-              private productService: ProductService, 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {product: Product},
+              private productService: ProductService,
               private fb: FormBuilder,
               private spinner: NgxSpinnerService,
               private messageService: MessageService) {}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Product } from 'src/app/product.model';
+import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 
@@ -15,7 +15,7 @@ export class ReadComponent implements OnInit {
   products!: Product[]
   productName: string = ''
 
-  constructor(private productService: ProductService, 
+  constructor(private productService: ProductService,
               private dialog: MatDialog,
               private spinner: NgxSpinnerService) { }
 

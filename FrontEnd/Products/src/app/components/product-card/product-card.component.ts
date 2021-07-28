@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Product } from 'src/app/product.model';
+import { Product } from 'src/app/models/product.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { MessageService } from 'src/app/services/message.service';
@@ -19,7 +19,7 @@ export class ProductCardComponent implements OnInit {
 
   constructor(private localStorageService: LocalStorageService,
               private dialog: MatDialog,
-              private authService: AuthService, 
+              private authService: AuthService,
               private messageService: MessageService) { }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Product } from 'src/app/product.model';
+import { Product } from 'src/app/models/product.model';
 import { MessageService } from 'src/app/services/message.service';
 import { ProductService } from 'src/app/services/product.service';
 

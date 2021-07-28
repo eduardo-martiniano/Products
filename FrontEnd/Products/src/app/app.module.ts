@@ -4,11 +4,9 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { CreateComponent } from './components/create/create.component';
 import { ReadComponent } from './components/read/read.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
@@ -31,11 +29,11 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { CompletedBuyComponent } from './components/completed-buy/completed-buy.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxMaskModule } from 'ngx-mask';
-import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { HideDirective } from './directives/hide.directive';
 import { JwtModule } from '@auth0/angular-jwt';
 import { registerLocaleData } from '@angular/common';
+import { SharedModule } from './modules/shared/shared.module';
 
 registerLocaleData("ptBr");
 export function tokenGetter(){
@@ -45,15 +43,12 @@ export function tokenGetter(){
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    CreateComponent,
     ReadComponent,
     ProductDetailsComponent,
     ProductCardComponent,
     ShoppingCartComponent,
     CheckoutComponent,
     CompletedBuyComponent,
-    FooterComponent,
     LoginComponent,
     HideDirective
   ],
@@ -62,6 +57,7 @@ export function tokenGetter(){
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    SharedModule,
     MatSidenavModule,
     MatListModule,
     HttpClientModule,
