@@ -6,6 +6,7 @@ import { CreateComponent } from './components/create/create.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReadComponent } from './components/read/read.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { SharedGuard } from './services/guards/shared.guard';
 
 const routes: Routes = [
   {
@@ -22,7 +23,9 @@ const routes: Routes = [
   },
   {
     path :"products/create",
-    component: CreateComponent
+    component: CreateComponent,
+    canActivate: [SharedGuard],
+    data: {role: "admin"}
   },
   {
     path :"shopping-cart",
