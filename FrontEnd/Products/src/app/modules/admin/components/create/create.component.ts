@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from 'src/app/models/product.model';
 import { MessageService } from 'src/app/services/message.service';
@@ -16,6 +17,7 @@ export class CreateComponent implements OnInit {
 
   constructor(private productService : ProductService,
               private messageSevice: MessageService,
+              private router: Router,
               private spinner: NgxSpinnerService,
               private fb: FormBuilder) {}
 
@@ -36,8 +38,9 @@ export class CreateComponent implements OnInit {
       this.spinner.hide();
     }).catch(error => {
       this.messageSevice.showErrorByStatus(error.status);
-      this.formulario.reset();
-      this.spinner.hide();
+      if (error.status == 401) {
+        this.router.navigate(['login']);
+      }
     });
   }
 

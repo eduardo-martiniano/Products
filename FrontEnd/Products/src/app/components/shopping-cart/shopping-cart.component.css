@@ -5,6 +5,7 @@
 
 #content {
   height: 95%;
+  display: inherit;
 }
 
 .product-card {
@@ -84,4 +85,30 @@ img {
   justify-content: center;
   border-radius: 11px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin-bottom: 70px;
+}
+
+@media (max-width: 400px) {
+  .product-card {
+    display: grid;
+  }
+
+  .div-image-title {
+    display: flex;
+  }
+
+  .button-remove {
+    margin-top: 20px;
+    width: 280px;
+  }
+
+  .div-price-remove {
+    display: grid;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .product-card {
+    justify-content: center;
+  }
 }

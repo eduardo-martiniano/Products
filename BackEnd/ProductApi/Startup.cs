@@ -36,7 +36,9 @@ namespace ProductApi
             }));
 
             services.AddCors(options =>
-                options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
+                options.AddDefaultPolicy(builder => builder.AllowAnyOrigin()
+                                                           .AllowAnyHeader()
+                                                           .AllowAnyMethod()));
             
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("ConfigOptions:Secret").Value);
             services.AddAuthentication(x => 
