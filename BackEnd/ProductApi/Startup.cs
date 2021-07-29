@@ -26,15 +26,17 @@ namespace ProductApi
             services.AddSignalR();
             services.Configure<ConfigOptions>(Configuration.GetSection("ConfigOptions"));
 
-            //  services.AddCors(options =>
-            //     {
-            //         options.AddPolicy("CorsPolicyForDashboard", builder => 
-            //             builder
-            //                 .WithOrigins("http://localhost:4200", "http://localhost:4200/products", "http://localhost:4200/checkout")
-            //                 .AllowAnyMethod()
-            //                 .AllowAnyHeader()
-            //                 .AllowCredentials());
-            //     });
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+            builder =>
+            {
+                builder.AllowAnyHeader()
+                       .AllowAnyMethod()
+                       .SetIsOriginAllowed((host) => true)
+                       .AllowCredentials();
+            }));
+
+            services.AddCors(options =>
+                options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
             
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("ConfigOptions:Secret").Value);
             services.AddAuthentication(x => 
@@ -79,19 +81,12 @@ namespace ProductApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(x => x
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
-
-            // app.UseCors("CorsPolicyForDashboard");
-
-             app.UseSignalR(route => 
+            app.UseCors("CorsPolicy");
+            app.UseSignalR(route => 
             {
                 route.MapHub<BrokerHub>("/brokerhub");
             });
 
-            app.UseHttpsRedirection(); 
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
