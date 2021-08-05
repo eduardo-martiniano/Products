@@ -34,6 +34,8 @@ import { HideDirective } from './directives/hide.directive';
 import { JwtModule } from '@auth0/angular-jwt';
 import { registerLocaleData } from '@angular/common';
 import { SharedModule } from './modules/shared/shared.module';
+import { HomeComponent } from './components/home/home.component';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 registerLocaleData("ptBr");
 export function tokenGetter(){
@@ -50,7 +52,8 @@ export function tokenGetter(){
     CheckoutComponent,
     CompletedBuyComponent,
     LoginComponent,
-    HideDirective
+    HideDirective,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,7 @@ export function tokenGetter(){
     NgBrazil,
     TextMaskModule,
     NgxSpinnerModule,
+    TextFieldModule,
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot(),
     JwtModule.forRoot({

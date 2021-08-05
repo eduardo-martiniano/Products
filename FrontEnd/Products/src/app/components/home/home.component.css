@@ -1,0 +1,209 @@
+.hero {
+  background-image: url('../../../assets/hero.jpg');
+  background-size: cover;
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  margin-bottom: 30px;
+
+}
+
+.hero h3 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.hero .btn {
+  background-color: rgb(102, 12, 161);
+  border-radius: 4px;
+  color: #fff;
+  padding: 20px 50px;
+  text-transform: uppercase;
+}
+
+@media(max-width: 700px) {
+  .hero h1 {
+      font-size: 2.5rem;
+  }
+
+  .hero h3 {
+      font-size: 1.5rem;
+  }
+
+}
+
+.highlights-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 50px;
+  padding-bottom: 20px;
+}
+
+.highlights-cards {
+  display: flex;
+}
+
+.highlights-section h3 {
+  font-size: 2rem;
+  margin-bottom: 35px;
+  color: rgb(102, 12, 161);
+  text-align: center;
+}
+
+.highlights-section hr {
+  width: 200px;
+  height: 2px;
+  background-color: rgb(102, 12, 161);
+  margin-bottom: 70px;
+  border: none;
+}
+
+.highlights {
+  width: 100%;
+  display: flex;
+  justify-content: center
+}
+
+
+.highlightsCard img {
+  height: 250px;
+}
+
+@media(max-width: 1280px) {
+  .highlights-cards {
+    flex-direction: column;
+  }
+}
+
+.rating-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 50px;
+  padding-bottom: 20px;
+  background-color: rgb(102, 12, 161);
+  color: #fff;
+
+}
+
+.rating-section hr {
+  width: 200px;
+  height: 2px;
+  background-color: #fff;
+  margin-bottom: 70px;
+  border: none;
+}
+
+.rating-section h3 {
+  font-size: 2rem;
+  margin-bottom: 35px;
+  color: #fff;
+  text-align: center;
+}
+
+.ratings-cards {
+  display: flex;
+}
+
+.rating-card {
+  width: 400px;
+  text-align: center;
+}
+
+.rating-card img {
+  width: 300px;
+  border-radius: 2%;
+}
+
+.rating-card p {
+  padding: 20px;
+  margin: 0 40px;
+}
+
+@media(max-width: 1240px) {
+  .ratings-cards {
+    flex-direction: column;
+  }
+}
+
+@media(max-width: 400px) {
+  .rating-card img {
+    width: 250px;
+  }
+
+  .rating-card {
+    width: 350px;
+  }
+}
+
+.section-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 50px;
+  color: rgb(102, 12, 161);
+}
+
+.section-contact h3 {
+  font-size: 2rem;
+  margin-bottom: 35px;
+  color: rgb(102, 12, 161);
+  text-align: center;
+}
+
+.section-contact h5 {
+  font-size: 1.3rem;
+  margin-bottom: 35px;
+  color: rgb(102, 12, 161);
+  text-align: center;
+}
+
+.section-contact hr {
+  width: 200px;
+  height: 2px;
+  background-color: rgb(102, 12, 161);
+  margin-bottom: 20px;
+  border: none;
+}
+
+.section-contact form {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-contact button {
+  margin: 30px 0;
+  height: 50px;
+  font-size: 18px;
+}
+
+.section-contact mat-form-field {
+  width: 600px;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+}
+
+@media(max-width: 650px) {
+  .section-contact mat-form-field {
+    width: 300px;
+    transition: 1s;
+  }
+}
+
+#hr-highlights {
+  margin-top: 70px;
+}

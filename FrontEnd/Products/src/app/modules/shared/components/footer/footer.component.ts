@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class FooterComponent implements OnInit {
 
   authenticated = false;
+  currentDate = new Date().getFullYear();
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {

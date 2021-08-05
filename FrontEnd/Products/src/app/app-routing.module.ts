@@ -6,11 +6,16 @@ import { ReadComponent } from './components/read/read.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { SharedGuard } from './services/guards/shared.guard';
 import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
     path: "",
-    component: ReadComponent
+    component: HomeComponent
+  },
+  {
+    path: "home",
+    component: HomeComponent
   },
   {
     path: "login",

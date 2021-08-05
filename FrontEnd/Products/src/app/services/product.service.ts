@@ -36,7 +36,7 @@ export class ProductService {
     });
   }
 
-  edit(product: Product, id?: number): Promise<any> {
+  edit(product: Product, id: any): Promise<any> {
     const headers = {
       'Authorization': `Bearer ${this.localStorageService.getToken()}`
     };
@@ -47,7 +47,7 @@ export class ProductService {
     });
   }
 
-  remove(id?: number): Promise<any> {
+  remove(id: any): Promise<any> {
     const headers = {
       'Authorization': `Bearer ${this.localStorageService.getToken()}`
     };

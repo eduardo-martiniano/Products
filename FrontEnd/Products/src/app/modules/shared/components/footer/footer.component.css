@@ -1,7 +1,38 @@
 footer {
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(102, 12, 161);
+  padding: 10px 0;
+  align-items: center;
 }
 
-a {
-    font-size: 18px;
+footer ul {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+footer li {
+  margin-right: 10px;
+}
+
+footer li:last-child {
+  margin-right: 0;
+}
+
+footer li a {
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+}
+
+footer p {
+  color: #fff;
+  text-align: center;
+}
+
+#linkedin {
+  color: #fff;
+}
+
+#name {
+  color: rgb(39, 202, 126);
 }

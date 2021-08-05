@@ -25,7 +25,7 @@ export class LocalStorageService {
     return JSON.parse(localStorage.getItem("products") as string) || [];
   }
 
-  productInList(productId: number): boolean {
+  productInList(productId: any): boolean {
     const list = this.getProductListInCart();
     return list.filter(x => x.id == productId).length > 0;
   }
@@ -44,7 +44,7 @@ export class LocalStorageService {
 
   }
 
-  removeProduct(product_id: number) {
+  removeProduct(product_id: any) {
     let productsListInCart = this.getProductListInCart().filter(x => x.id != product_id);
     localStorage.setItem("products", JSON.stringify(productsListInCart));
     this.productsNumber--;

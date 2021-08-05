@@ -1,4 +1,14 @@
-<footer>
-    <a href="" routerLink="/login" *ngIf="!authenticated">Você é administrador? Entrar</a>
+
+<footer id="footer">
+  <ul>
+      <li><a href="https://github.com/eduardo-martiniano" target="_blank"><i class="fab fa-github"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/eduardo-martiniano/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+  </ul>
+  <p>
+      Todos os direitos reservados -
+      <a id="linkedin" href="https://www.linkedin.com/in/eduardo-martiniano/" target="_blank">
+          <strong id="name">Eduardo Martiniano</strong>
+      </a>
+      |
+      <span id="data-atual">{{currentDate}}</span></p>
 </footer>
-<br>

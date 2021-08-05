@@ -1,22 +1,13 @@
-<mat-toolbar color="primary" id="nav-bar">
-  <div style="display: flex;">
-    <button mat-button routerLink="products">
-      <mat-icon>shopping_bag</mat-icon>
-      Produtos
-    </button>
-    <button mat-button routerLink="products/create" *ngIf="authenticated">
-      <mat-icon>add_circle</mat-icon>
-      Cadastrar
-    </button>
-  </div>
-  <div style="display: flex;">
-    <button mat-button routerLink="login" (click)="logout()" *ngIf="authenticated">
-      Sair
-      <mat-icon>logout</mat-icon>
-    </button>
-    <button mat-button matBadge="{{localStorageService.productsNumber}}" matBadgeColor="warn"
+<header>
+  <a href="#"> <img src="../../../../../assets/logo.png" alt="Loja Store"></a>
+  <nav>
+    <li><a routerLink="home" href="">Home</a></li>
+    <li><a routerLink="products" href="">Produtos</a></li>
+    <li *ngIf="!authenticated"><a routerLink="login" href="">Entrar</a></li>
+    <li *ngIf="authenticated"><a routerLink="login" (click)="logout()">Sair</a></li>
+    <button mat-button id="cart-count" matBadge="{{localStorageService.productsNumber}}" matBadgeColor="warn"
       routerLink="shopping-cart">
       <mat-icon>shopping_cart</mat-icon>
     </button>
-  </div>
-</mat-toolbar>
+  </nav>
+</header>

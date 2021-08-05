@@ -7,7 +7,7 @@
       </div>
       <div class="div-price-remove">
         <span class="label-price">{{p.price | currency: "BRL"}}</span>
-        <button mat-raised-button color="warn" class="button-remove" (click)="removeProduct(p.id || 0)">Remover</button>
+        <button mat-raised-button color="warn" class="button-remove" (click)="removeProduct(p.id)">Remover</button>
       </div>
     </div>
     <div id="total-purchase" *ngIf="!(total == 0)">

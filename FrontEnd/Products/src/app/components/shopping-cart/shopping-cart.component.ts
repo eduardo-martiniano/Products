@@ -28,7 +28,7 @@ export class ShoppingCartComponent implements OnInit {
     this.route.navigate(['checkout']);
   }
 
-  removeProduct(product_id: number) {
+  removeProduct(product_id: any) {
     this.localStorageService.removeProduct(product_id);
     this.products = this.localStorageService.getProductListInCart();
     this.total = this.localStorageService.getTotalOfBuy();

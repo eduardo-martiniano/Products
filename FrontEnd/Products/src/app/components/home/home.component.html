@@ -1,0 +1,69 @@
+<section class="hero">
+  <h1>Tenha acesso aos preços mais baixos</h1>
+  <h3>"Qualidade, confiaça e rapidez"</h3>
+  <a routerLink="products" href="" class="btn">Saiba mais</a>
+</section>
+
+<section class="highlights-section">
+  <h3>Destaques</h3>
+  <hr>
+  <div class="highlights-cards">
+    <app-product-card *ngFor="let p of productsHighlights" [product]="p"></app-product-card>
+  </div>
+  <hr id="hr-highlights">
+</section>
+
+<section class="rating-section">
+  <h3>Avaliações de nossos clientes</h3>
+  <hr>
+  <div class="ratings-cards">
+    <div class="rating-card" *ngFor="let c of ratings">
+      <img src="{{c.urlImage}}" alt="">
+      <h2>{{c.name}}</h2>
+      <div>
+        <mat-icon>star</mat-icon>
+        <mat-icon>star</mat-icon>
+        <mat-icon>star</mat-icon>
+        <mat-icon>star</mat-icon>
+        <mat-icon>star</mat-icon>
+      </div>
+      <p>"{{c.feedback}}"</p>
+    </div>
+  </div>
+  <hr style="margin-top: 70px;">
+</section>
+
+<section class="section-contact">
+  <h3>Contato</h3>
+  <h5>Preencha o formulário para falar conosco</h5>
+  <hr>
+  <form [formGroup]="formContact">
+    <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <input formControlName="email" matInput type="email">
+    </mat-form-field>
+    <div *ngIf="!email.valid && (email.dirty ||email.touched)" class="error-message">
+      <div [hidden]="!email.errors.required">
+        O campo email é obrigatório!
+      </div>
+      <div [hidden]="!email.errors.email">
+        O email é invalido!
+      </div>
+    </div>
+    <mat-form-field>
+      <mat-label>Mensagem</mat-label>
+      <textarea matInput
+            formControlName="message"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+    <div *ngIf="!message.valid && (message.dirty ||message.touched)" class="error-message">
+      <div [hidden]="!message.errors.required">
+        O campo mensagem é obrigatório!
+      </div>
+    </div>
+    <button mat-raised-button (click)="submit()" [disabled]="!formIvalid">Enviar</button>
+  </form>
+</section>
