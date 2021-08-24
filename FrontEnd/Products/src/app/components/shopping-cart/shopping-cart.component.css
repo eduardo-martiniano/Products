@@ -75,17 +75,14 @@ img {
 
 #div-cart-empty {
   text-align: center;
-  background-color: #cce5ff;
-  color: #004085;
-  width: 100%;
-  text-align: center;
-  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 11px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  margin-bottom: 70px;
+  height: 75%;
+}
+
+#div-cart-empty h1 {
+  font-size: 2rem;
 }
 
 @media (max-width: 400px) {

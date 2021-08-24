@@ -1,45 +1,45 @@
 #container {
-    width: 95%;
-    margin: 50px auto;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 #process-payment {
-    background-color: #cce5ff;
     color: #004085;
-    width: 100%;
+    padding: 40px;
     text-align: center;
     height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 11px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
 }
 
 #refused-payment {
-    background-color: #f8d7da;
     color: #721c24;
-    width: 100%;
+    padding: 40px;
     text-align: center;
     height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 11px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
 }
 
 #accepted-payment {
-    background-color: #d4edda;
     color: #155724;
-    width: 100%;
+    padding: 40px;
     text-align: center;
     height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 11px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 i {
