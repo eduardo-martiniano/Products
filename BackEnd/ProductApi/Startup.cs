@@ -84,10 +84,6 @@ namespace ProductApi
             }
 
             app.UseCors("CorsPolicy");
-            app.UseSignalR(route => 
-            {
-                route.MapHub<BrokerHub>("/brokerhub");
-            });
 
             app.UseRouting();
             app.UseAuthentication();
@@ -100,6 +96,7 @@ namespace ProductApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<BrokerHub>("/brokerhub");
             });
         }
     }
