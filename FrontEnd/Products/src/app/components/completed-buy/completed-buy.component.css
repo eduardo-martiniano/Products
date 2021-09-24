@@ -1,47 +1,59 @@
 #container {
-    width: 100%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 #process-payment {
-    color: #004085;
-    padding: 40px;
-    text-align: center;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 11px;
-
+  color: #004085;
+  padding: 40px;
+  text-align: center;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
 }
 
 #refused-payment {
-    color: #721c24;
-    padding: 40px;
-    text-align: center;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 11px;
+  color: #721c24;
+  padding: 40px;
+  text-align: center;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+}
 
+#refused-payment button {
+  background-color: rgb(102, 12, 161);
+  color: #fff;
+  font-size: 18px;
+  padding: 5px;
+}
+
+#refused-payment-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
 }
 
 #accepted-payment {
-    color: #155724;
-    padding: 40px;
-    text-align: center;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 11px;
+  color: #155724;
+  padding: 40px;
+  text-align: center;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
 }
 
 i {
-    font-size: 30px !important;
+  font-size: 30px !important;
 }

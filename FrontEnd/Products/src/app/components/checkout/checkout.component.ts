@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { utilsBr, fakerBr } from 'js-brasil';
 import { PaymentService } from 'src/app/services/payment.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-checkout',
@@ -16,13 +17,14 @@ export class CheckoutComponent implements OnInit {
   formAddress: any;
   formPayment: any;
   public MASKS = utilsBr.MASKS;
-  
-  constructor(private router: Router, 
-              private fb: FormBuilder, 
-              private paymentService: PaymentService,
-              private localStorageService: LocalStorageService) {
-                
-              }
+
+  constructor(private router: Router,
+    private fb: FormBuilder,
+    private paymentService: PaymentService,
+    private spinner: NgxSpinnerService,
+    private localStorageService: LocalStorageService) {
+
+  }
 
   ngOnInit(): void {
     this.formAddress = this.fb.group({
@@ -50,10 +52,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   get formPaymentValid(): boolean {
-    return this.formPayment .valid;
+    return this.formPayment.valid;
   }
 
   pay() {
+    this.spinner.show();
     const address = this.formAddress.value;
     const card = this.formPayment.value;
     const products = this.localStorageService.getProductListInCart();
@@ -68,8 +71,8 @@ export class CheckoutComponent implements OnInit {
     };
 
     this.paymentService.pay(buyViweModel).then(response => {
-      this.localStorageService.clearLocalStorage();
-      this.router.navigate(['finish/'+ response.id]);
+      this.spinner.hide();
+      this.router.navigate(['finish/' + response.id]);
     })
   }
 

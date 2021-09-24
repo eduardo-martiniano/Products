@@ -7,9 +7,10 @@
         </div>
     </div>
     <div id="refused-payment" *ngIf="statusPayment==1">
-        <div>
+        <div id="refused-payment-content">
             <h1>Oops! Seu pagamento foi recusado</h1>
-            <mat-icon>error</mat-icon>
+
+            <button mat-raised-button (click)="tryPayAgain()">Tentar pagar novamente</button>
         </div>
     </div>
     <div id="accepted-payment" *ngIf="statusPayment==2">

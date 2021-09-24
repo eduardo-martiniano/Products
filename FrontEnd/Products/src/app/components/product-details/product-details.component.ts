@@ -14,7 +14,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  formulario: any;
+  form: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {product: Product},
               private productService: ProductService,
@@ -23,7 +23,7 @@ export class ProductDetailsComponent implements OnInit {
               private messageService: MessageService) {}
 
   ngOnInit(): void {
-    this.formulario = this.fb.group({
+    this.form = this.fb.group({
       name: [this.data.product.name, [Validators.required, Validators.maxLength(20)]],
       price: [this.data.product.price, [Validators.required]],
       image: [this.data.product.image, [Validators.required]]
@@ -32,7 +32,7 @@ export class ProductDetailsComponent implements OnInit {
 
   edit(): void {
     this.spinner.show();
-    const product = this.formulario.value as Product;
+    const product = this.form.value as Product;
     this.productService.edit(product, this.data.product.id).then(() =>{
       this.spinner.hide();
       this.messageService.showSucess("Produto Editado com sucesso!");
@@ -45,7 +45,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   get isValid(): boolean{
-    return this.formulario.valid
+    return this.form.valid
   }
 
 }

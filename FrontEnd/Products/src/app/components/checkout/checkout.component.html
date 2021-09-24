@@ -45,7 +45,7 @@
         <button mat-flat-button color="primary" [disabled]="!formAddressValid"  matStepperNext>Seguir para dados do cartão</button>
       </div>
     </mat-step>
-  
+
     <mat-step [stepControl]="formPayment" label="Cartão">
       <div>
         <form [formGroup]="formPayment" id="container-payment">
@@ -82,5 +82,5 @@
       </div>
     </mat-step>
   </mat-horizontal-stepper>
-  
-</div>  
+</div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3f51b5" type = "timer" [fullScreen] = "true"></ngx-spinner>

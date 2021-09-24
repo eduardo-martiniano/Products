@@ -36,6 +36,7 @@ import { registerLocaleData } from '@angular/common';
 import { SharedModule } from './modules/shared/shared.module';
 import { HomeComponent } from './components/home/home.component';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import { TryPayAgainComponent } from './components/try-pay-again/try-pay-again.component';
 
 registerLocaleData("ptBr");
 export function tokenGetter(){
@@ -53,7 +54,8 @@ export function tokenGetter(){
     CompletedBuyComponent,
     LoginComponent,
     HideDirective,
-    HomeComponent
+    HomeComponent,
+    TryPayAgainComponent
   ],
   imports: [
     BrowserModule,
