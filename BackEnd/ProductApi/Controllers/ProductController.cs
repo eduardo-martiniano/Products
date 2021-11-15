@@ -39,8 +39,14 @@ namespace ProductApi.Controllers
         [Route("search")]
         public async Task<IActionResult> GetByName([FromQuery] string name)
         {
-            var _product = await _productRepository.GetByName(name);
-            return Ok(_product);
+            if (String.IsNullOrEmpty(name))
+            {
+                var products = await _productRepository.Get();
+                return Ok(products);
+            }
+
+            var productsByName = await _productRepository.GetByName(name);
+            return Ok(productsByName);
         }
 
         [HttpDelete]
